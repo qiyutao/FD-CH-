@@ -1,0 +1,44 @@
+
+-----------stop-----------
+analogWrite 9,127
+analogWrite 10,127
+dw 2,l
+dw 4,l
+dw 7,l
+dw 8,l
+
+-----------left--------
+
+analogWrite 9,127
+analogWrite 10,127
+dw 2,h//l
+dw 4,l
+dw 7,h//r
+dw 8,l
+
+----------forward---------
+analogWrite 9,127
+analogWrite 10,127
+dw 2,l//l
+dw 4,h
+dw 7,h//r
+dw 8,l
+
+----------back-----------
+
+analogWrite 9,127
+analogWrite 10,127
+dw 2,h//l
+dw 4,l
+dw 7,l//r
+dw 8,h
+
+-------------right----------
+
+analogWrite 9,127
+analogWrite 10,127
+dw 2,l//l
+dw 4,h
+dw 7,l//r
+dw 8,h
+
