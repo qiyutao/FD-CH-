@@ -210,3 +210,27 @@ Blockly.Blocks.grove_lcd = {
     this.setHelpUrl('');
   }
 };
+
+Blockly.Blocks.button = {
+  init: function() {
+    this.appendValueInput("touch")
+        .setCheck(null)
+        .appendField("按钮 pin#");
+    this.setOutput(true, null);
+    this.setColour(230);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks.touch = {
+  init: function() {
+    this.appendValueInput("touch")
+        .setCheck(null)
+        .appendField("触摸传感器 pin#");
+    this.setOutput(true, null);
+    this.setColour(20);
+    this.setTooltip('');
+    this.setHelpUrl('');
+  }
+};

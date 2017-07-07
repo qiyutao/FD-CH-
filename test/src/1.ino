@@ -1,18 +1,24 @@
 #include "Arduino.h"
-#include <Wire.h>
-#include "rgb_lcd.h"
-
-rgb_lcd lcd;
+int item;
 
 void setup()
 {
-  lcd.begin(16, 2);
-  lcd.print("QYT");
+  pinMode(4, INPUT);
 
+  pinMode(13, OUTPUT);
 }
 
 
 void loop()
 {
+  item = digitalRead(4);
+  ;
+  if (item == 1) {
+    digitalWrite(13, HIGH);
+
+  } else {
+    digitalWrite(13, LOW);
+
+  }
 
 }

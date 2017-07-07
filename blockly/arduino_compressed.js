@@ -71,3 +71,17 @@ Blockly.Arduino.grove_lcd = function() {
   
   return code;
 };
+
+Blockly.Arduino.button = function(block) {
+  var pin = Blockly.Arduino.valueToCode(this, 'touch', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_["buttonset"] = "pinMode("+pin+", INPUT);\n";
+  var code = "digitalRead("+pin+");\n";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.touch = function(block) {
+  var pin = Blockly.Arduino.valueToCode(this, 'touch', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_["touchset"] = "pinMode("+pin+", INPUT);\n";
+  var code = "digitalRead("+pin+");\n";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
