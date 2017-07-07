@@ -224,6 +224,36 @@ Blockly.Blocks.button = {
   }
 };
 
+Blockly.Blocks.grove_piezo_buzzer = {
+  helpUrl: 'http://www.seeedstudio.com/wiki/GROVE_-_Starter_Kit_V1.1b#Grove_.E2.80.93_Buzzer',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput()
+        .appendField("Piezo Buzzer")
+        //.appendField(new Blockly.FieldImage("http://www.seeedstudio.com/wiki/images/thumb/e/ed/Buzzer1.jpg/400px-Buzzer1.jpg", 64, 64))
+        .appendField("PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.digital), "PIN")
+        .appendField("stat")
+        .appendField(new Blockly.FieldDropdown([["HIGH", "HIGH"], ["LOW", "LOW"]]), "STAT");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Emit a tone when the output is high');
+  }
+};
+
+Blockly.Blocks.rotary = {
+  helpUrl: 'http://arduino.cc/en/Reference/AnalogRead',
+  init: function() {
+    this.setColour(230);
+    this.appendDummyInput()
+        .appendField("旋钮 PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.setOutput(true, 'Number');
+  }
+};
+
+
+
 /***************sensor*******************/
 
 Blockly.Blocks.touch = {
@@ -248,5 +278,27 @@ Blockly.Blocks.temporature = {
         .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN")
     this.setOutput(true, 'Number');
     this.setTooltip('Detect the sound strength of the environment');
+  }
+};
+
+Blockly.Blocks.sound = {
+  helpUrl: 'http://arduino.cc/en/Reference/AnalogRead',
+  init: function() {
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("声音传感器 PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.setOutput(true, 'Number');
+  }
+};
+
+Blockly.Blocks.light = {
+  helpUrl: 'http://arduino.cc/en/Reference/AnalogRead',
+  init: function() {
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("光线传感器 PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN");
+    this.setOutput(true, 'Number');
   }
 };

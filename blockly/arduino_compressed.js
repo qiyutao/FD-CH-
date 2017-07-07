@@ -80,6 +80,22 @@ Blockly.Arduino.button = function(block) {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+Blockly.Arduino.grove_piezo_buzzer = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  var dropdown_stat = this.getFieldValue('STAT');
+  Blockly.Arduino.setups_['setup_piezo_buzzer_'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
+  var code = 'digitalWrite('+dropdown_pin+','+dropdown_stat+');\n'
+  return code;
+};
+
+Blockly.Arduino.rotary = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  //Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
+  var code = 'analogRead(' + dropdown_pin + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+
 /***************sensor*******************/
 
 Blockly.Arduino.touch = function(block) {
@@ -97,5 +113,19 @@ Blockly.Arduino.temporature = function() {
   temperature=1/(log(resistance/10000)/B+1/298.15)-273.15;
   */
   var code = '1/(log(((float)(1023-(analogRead('+dropdown_pin+')))*10000/(analogRead('+dropdown_pin+')))/10000)/3975+1/298.15)-273.15;\n';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.sound = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  //Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
+  var code = 'analogRead(' + dropdown_pin + ')';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.light = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  //Blockly.Arduino.setups_['setup_input_'+dropdown_pin] = 'pinMode('+dropdown_pin+', INPUT);';
+  var code = 'analogRead(' + dropdown_pin + ')';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };

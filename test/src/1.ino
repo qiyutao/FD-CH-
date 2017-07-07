@@ -1,4 +1,5 @@
-#include "Arduino.h"
+#include "Arduino.h"
+#include <Servo.h>
 int item;
 
 void setup()
@@ -9,9 +10,8 @@ void setup()
 
 void loop()
 {
-  item = 1/(log(((float)(1023-(analogRead(A0)))*10000/(analogRead(A0)))/10000)/3975+1/298.15)-273.15;
-  ;
-  if (item > 33) {
+  item = analogRead(A0);
+  if (item > 50) {
     digitalWrite(13, HIGH);
 
   } else {
