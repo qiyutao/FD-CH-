@@ -196,6 +196,7 @@ this.setFieldValue(b,"VAR")},contextMenuType_:"variables_set",customContextMenu:
 Blockly.Blocks.variables_set={init:function(){this.jsonInit({message0:"\u8bbe\u7f6e %1 \u503c\u4e3a %2",args0:[{type:"field_variable",name:"VAR",variable:Blockly.Msg.VARIABLES_DEFAULT_NAME},{type:"input_value",name:"VALUE"}],previousStatement:null,nextStatement:null,colour:Blockly.Blocks.variables.HUE,tooltip:Blockly.Msg.VARIABLES_SET_TOOLTIP,helpUrl:Blockly.Msg.VARIABLES_SET_HELPURL});this.contextMenuMsg_=Blockly.Msg.VARIABLES_SET_CREATE_GET},getVars:function(){return[this.getFieldValue("VAR")]},
 renameVar:function(a,b){Blockly.Names.equals(a,this.getFieldValue("VAR"))&&this.setFieldValue(b,"VAR")},contextMenuType_:"variables_get",customContextMenu:Blockly.Blocks.variables_get.customContextMenu};
 
+/***************input/output*********************/
 
 Blockly.Blocks.grove_lcd = {
   init: function() {
@@ -223,6 +224,8 @@ Blockly.Blocks.button = {
   }
 };
 
+/***************sensor*******************/
+
 Blockly.Blocks.touch = {
   init: function() {
     this.appendValueInput("touch")
@@ -232,5 +235,18 @@ Blockly.Blocks.touch = {
     this.setColour(20);
     this.setTooltip('');
     this.setHelpUrl('');
+  }
+};
+
+Blockly.Blocks.temporature = {
+  helpUrl: 'http://www.seeedstudio.com/wiki/Grove_-_Sound_Sensor',
+  init: function() {
+    this.setColour(20);
+    this.appendDummyInput()
+        .appendField("温度传感器")
+        .appendField("PIN#")
+        .appendField(new Blockly.FieldDropdown(profile.default.analog), "PIN")
+    this.setOutput(true, 'Number');
+    this.setTooltip('Detect the sound strength of the environment');
   }
 };

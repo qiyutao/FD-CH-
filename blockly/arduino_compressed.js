@@ -58,6 +58,7 @@ Blockly.Arduino.procedures_ifreturn=function(){var a="if ("+(Blockly.Arduino.val
 Blockly.Arduino.variables_declare=function(){this.getFieldValue("TYPE");var a=Blockly.Arduino.valueToCode(this,"VALUE",Blockly.Arduino.ORDER_ASSIGNMENT)||"0",b=Blockly.Arduino.variableDB_.getName(this.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE);Blockly.Arduino.setups_["setup_var"+b]=b+" = "+a+";\n";return""};
 Blockly.Arduino.variables_set=function(){var a=Blockly.Arduino.valueToCode(this,"VALUE",Blockly.Arduino.ORDER_ASSIGNMENT)||"0";return Blockly.Arduino.variableDB_.getName(this.getFieldValue("VAR"),Blockly.Variables.NAME_TYPE)+" = "+a+";\n"};
 
+/***************input/output*********************/
 
 Blockly.Arduino.grove_lcd = function() {
   var value_a = Blockly.Arduino.valueToCode(this, 'string', Blockly.Arduino.ORDER_ATOMIC);
@@ -79,9 +80,22 @@ Blockly.Arduino.button = function(block) {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+/***************sensor*******************/
+
 Blockly.Arduino.touch = function(block) {
   var pin = Blockly.Arduino.valueToCode(this, 'touch', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.setups_["touchset"] = "pinMode("+pin+", INPUT);\n";
   var code = "digitalRead("+pin+");\n";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
+Blockly.Arduino.temporature = function() {
+  var dropdown_pin = this.getFieldValue('PIN');
+  /*
+  a=analogRead(0);
+  resistance=(float)(1023-a)*10000/a;
+  temperature=1/(log(resistance/10000)/B+1/298.15)-273.15;
+  */
+  var code = '1/(log(((float)(1023-(analogRead('+dropdown_pin+')))*10000/(analogRead('+dropdown_pin+')))/10000)/3975+1/298.15)-273.15;\n';
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
